@@ -1,3 +1,5 @@
+#Author: Jason Gill
+
 import pip._vendor.requests;
 
 class WeatherMessage():

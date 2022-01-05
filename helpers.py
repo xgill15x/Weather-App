@@ -1,7 +1,7 @@
 #Author: Jason Gill
 #helper file
 
-import Objects, pip._vendor.requests;
+import objects;
 
 #Umbrella needed if rain >= .5mm/h
 def isUmbrellaNeeded(weatherApiResponse):
@@ -39,7 +39,7 @@ def getJacketType(weatherApiResponse):
 def getTrafficTimeForCoordPairs(originCoords, destinationCoords):
 
     #routeApi call
-    trafficApiConn = Objects.TrafficApiConn(originCoords, destinationCoords)
+    trafficApiConn = objects.TrafficApiConn(originCoords, destinationCoords)
     trafficApiResponse = trafficApiConn.trafficApiResponse
 
     rawTrafficTimeInSeconds = float(trafficApiResponse["route"]["duration"])
