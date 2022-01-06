@@ -1,6 +1,6 @@
 #Author: Jason Gill
 #DateCreated: 2022/01/03
-#WeatherAppWithMotivationalQuotes
+#WeatherAppWithTrafficTime
 
 import objects, helpers, privateInfo
 
