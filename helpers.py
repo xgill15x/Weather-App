@@ -3,6 +3,17 @@
 
 import objects;
 
+class WeatherMessage():
+    def __init__(self, mainWeather, tempHigh, tempLow, tempFeelsLike, currentTemp, needUmbrella, jacketType, trafficTime):
+        self.mainWeather = mainWeather
+        self.tempHigh = tempHigh
+        self.tempLow = tempLow
+        self.tempFeelsLike = tempFeelsLike
+        self.currentTemp = currentTemp
+        self.needUmbrella = needUmbrella
+        self.jacketType = jacketType
+        self.trafficTime = trafficTime
+
 #Umbrella needed if rain >= .5mm/h
 def isUmbrellaNeeded(weatherApiResponse):
 

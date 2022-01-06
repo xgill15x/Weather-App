@@ -29,5 +29,4 @@ trafficTime = helpers.getTrafficTimeForCoordPairs(originCoords, destinationCoord
 ####### Home #######
 
 #Constructing message instance
-myWeatherMessage = objects.WeatherMessage(weather, tempHigh, tempLow, tempFeelsLike, currentTemp, needUmbrella, jacketType, trafficTime)
-
+myWeatherMessage = helpers.WeatherMessage(weather, tempHigh, tempLow, tempFeelsLike, currentTemp, needUmbrella, jacketType, trafficTime)
