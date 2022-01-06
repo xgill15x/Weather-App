@@ -2,18 +2,9 @@
 #DateCreated: 2022/01/03
 #WeatherAppWithMotivationalQuotes
 
-import objects, helpers
-from twilio.rest import Client
+import objects, helpers, privateInfo
 
-#origin and destination coords defined here (for traffic)       #testCoords: "origin":"40.629041,-74.025606","destination":"40.627177,-73.980853"
-originCoords = "49.16721382662555, -122.8723728872053"
-destinationCoords = "49.27819541642316, -122.91989418296538"
-
-#location info (for weather)
-myCity = "surrey"
-myCountryCode = "ca"
-
-weatherApiConn = objects.WeatherApiConn(myCity, myCountryCode)
+weatherApiConn = objects.WeatherApiConn(privateInfo.myCity, privateInfo.myCountryCode)
 
 #Initializing text components
 weather = weatherApiConn.getMainWeather()
@@ -23,10 +14,14 @@ tempFeelsLike = weatherApiConn.getTempFeelsLike()
 currentTemp = weatherApiConn.getCurrentTemp()
 needUmbrella = helpers.isUmbrellaNeeded(weatherApiConn.weatherApiResponse)
 jacketType = helpers.getJacketType(weatherApiConn.weatherApiResponse)
-trafficTime = helpers.getTrafficTimeForCoordPairs(originCoords, destinationCoords)
-
-
-####### Home #######
+trafficTime = helpers.getTrafficTimeForCoordPairs(privateInfo.originCoords, privateInfo.destinationCoords)
 
 #Constructing message instance
-myWeatherMessage = helpers.WeatherMessage(weather, tempHigh, tempLow, tempFeelsLike, currentTemp, needUmbrella, jacketType, trafficTime)
+myWeatherComponents = helpers.WeatherComponents(weather, tempHigh, tempLow, tempFeelsLike, currentTemp, needUmbrella, jacketType, trafficTime)
+myWeatherMessage = helpers.createWeatherMessage(myWeatherComponents)
+
+#send message
+helpers.sendSmsMessage(myWeatherMessage)
+
+
+print("Program Finished.")

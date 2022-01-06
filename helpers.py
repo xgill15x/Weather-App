@@ -1,9 +1,11 @@
 #Author: Jason Gill
 #helper file
 
-import objects;
+import objects, privateInfo;
+from twilio.rest import Client
+from datetime import date
 
-class WeatherMessage():
+class WeatherComponents:
     def __init__(self, mainWeather, tempHigh, tempLow, tempFeelsLike, currentTemp, needUmbrella, jacketType, trafficTime):
         self.mainWeather = mainWeather
         self.tempHigh = tempHigh
@@ -58,3 +60,33 @@ def getTrafficTimeForCoordPairs(originCoords, destinationCoords):
     trafficTimeInMinutes = round(rawTrafficTimeInSeconds/60)
 
     return trafficTimeInMinutes
+
+def createWeatherMessage(weatherComponents):
+    
+    today = date.today().strftime("%d-%b-%Y")    
+
+    myMessage = "\nDaily Weather & Traffic Report\n" 
+    myMessage += "(" + today + ")\n\n"
+    myMessage += "SFU Route Time: " + str(weatherComponents.trafficTime) + " minutes" + "\n\n"
+    myMessage += "Weather: " + weatherComponents.mainWeather + "\n"
+    myMessage += "Current Temp: " + str(weatherComponents.currentTemp) + " deg C°" + "\n"
+    myMessage += "Feels Like: " + str(weatherComponents.tempFeelsLike) + " deg C°" + "\n"
+    myMessage += "High of the Day: " + str(weatherComponents.tempHigh) + " deg C°" + "\n"
+    myMessage += "Low of the Day: " + str(weatherComponents.tempLow) + " deg C°" + "\n\n"
+    myMessage += "Umbrella Needed: " + weatherComponents.needUmbrella + "\n"
+    myMessage += "Jacket Type: " + weatherComponents.jacketType + "\n"
+
+    return myMessage
+
+def sendSmsMessage(body):
+    client = Client(privateInfo.twilioAccountSid, privateInfo.twilioAuthToken)
+
+    for clientPhoneNumber in privateInfo.listOfClientPhoneNumbers:
+
+        message = client.messages.create(
+            body=body,
+            from_= privateInfo.myTwilioPhoneNumber,
+            to= clientPhoneNumber
+        )
+
+    #print(message.sid)
