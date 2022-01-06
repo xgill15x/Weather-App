@@ -1,15 +1,6 @@
-import pip._vendor.requests;
+#Author: Jason Gill
 
-class WeatherMessage():
-    def __init__(self, mainWeather, tempHigh, tempLow, tempFeelsLike, currentTemp, needUmbrella, jacketType, trafficTime):
-        self.mainWeather = mainWeather
-        self.tempHigh = tempHigh
-        self.tempLow = tempLow
-        self.tempFeelsLike = tempFeelsLike
-        self.currentTemp = currentTemp
-        self.needUmbrella = needUmbrella
-        self.jacketType = jacketType
-        self.trafficTime = trafficTime
+import pip._vendor.requests;
 
 class WeatherApiConn:
     def __init__(self, myCity, myCountryCode):
