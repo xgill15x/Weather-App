@@ -23,5 +23,4 @@ myWeatherMessage = helpers.createWeatherMessage(myWeatherComponents)
 #send message
 helpers.sendSmsMessage(myWeatherMessage)
 
-
 print("Program Finished.")
