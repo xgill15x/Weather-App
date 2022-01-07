@@ -43,7 +43,7 @@ def getJacketType(weatherApiResponse):
     elif (tempFeelsLike >= 15 and tempFeelsLike <= 23):
         return "Light Jacket"
     
-    elif (tempFeelsLike > 24):
+    elif (tempFeelsLike >= 24):
         return "No Jacket Needed"
     else:
         return "error"
