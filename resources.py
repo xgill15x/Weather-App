@@ -2,12 +2,13 @@
 #Contains api calls
 
 import pip._vendor.requests;
+import privateInfo
 
 class WeatherApiConn:
     def __init__(self, myCity, myCountryCode):
         self.myCity = myCity
         self.myCountryCode = myCountryCode
-        self.myApiKey = "4e6c923cb35bf9bbfd9122fcd92a31cf"
+        self.myApiKey = privateInfo.weatherApiKey
         self.weatherApiEndpoint = "https://api.openweathermap.org/data/2.5/weather?q=" + self.myCity + "," + self.myCountryCode + "&appid=" + self.myApiKey + "&units=metric"
         self.weatherApiResponse = pip._vendor.requests.get(self.weatherApiEndpoint).json()
     
@@ -32,7 +33,7 @@ class TrafficApiConn:
         self.routeApi = "https://trueway-directions2.p.rapidapi.com/FindDrivingPath"
         self.routeApiHeaders = {
             'x-rapidapi-host': "trueway-directions2.p.rapidapi.com",
-            'x-rapidapi-key': "769176a291mshd466531c89c2ae8p16a9c6jsn66088812c1b0"
+            'x-rapidapi-key': privateInfo.rapidApiKey
         }
 
         self.originCoords = originCoords

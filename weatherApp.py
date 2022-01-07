@@ -21,7 +21,7 @@ myWeatherComponents = helpers.WeatherComponents(weather, tempHigh, tempLow, temp
 myWeatherMessage = helpers.createWeatherMessage(myWeatherComponents)
 
 #send message
-helpers.sendSmsMessage(myWeatherMessage)
+#helpers.sendSmsMessage(myWeatherMessage)
 
 print(myWeatherMessage)
 
