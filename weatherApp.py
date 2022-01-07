@@ -2,9 +2,9 @@
 #DateCreated: 2022/01/03
 #WeatherAppWithTrafficTime
 
-import objects, helpers, privateInfo
+import resources, helpers, privateInfo
 
-weatherApiConn = objects.WeatherApiConn(privateInfo.myCity, privateInfo.myCountryCode)
+weatherApiConn = resources.WeatherApiConn(privateInfo.myCity, privateInfo.myCountryCode)
 
 #Initializing text components
 weather = weatherApiConn.getMainWeather()
@@ -21,6 +21,8 @@ myWeatherComponents = helpers.WeatherComponents(weather, tempHigh, tempLow, temp
 myWeatherMessage = helpers.createWeatherMessage(myWeatherComponents)
 
 #send message
-helpers.sendSmsMessage(myWeatherMessage)
+#helpers.sendSmsMessage(myWeatherMessage)
+
+print(myWeatherMessage)
 
 print("Program Finished.")

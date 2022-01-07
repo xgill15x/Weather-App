@@ -1,7 +1,7 @@
 #Author: Jason Gill
 #helper file
 
-import objects, privateInfo;
+import resources, privateInfo;
 from twilio.rest import Client
 from datetime import date
 
@@ -52,7 +52,7 @@ def getJacketType(weatherApiResponse):
 def getTrafficTimeForCoordPairs(originCoords, destinationCoords):
 
     #routeApi call
-    trafficApiConn = objects.TrafficApiConn(originCoords, destinationCoords)
+    trafficApiConn = resources.TrafficApiConn(originCoords, destinationCoords)
     trafficApiResponse = trafficApiConn.trafficApiResponse
 
     rawTrafficTimeInSeconds = float(trafficApiResponse["route"]["duration"])
