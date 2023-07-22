@@ -1,2 +1,2 @@
 # Weather and Traffic App 🚦☀️⛈️
-This application gives precise daily updates on the weather and also provides travel time from my home to SFU.
+Delivers SMS messages regarding daily updates on the weather, travel time from my home to SFU and user recommendations based on the data.
